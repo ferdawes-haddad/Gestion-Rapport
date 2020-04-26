@@ -32,7 +32,7 @@
                     <span>Espace Administration</span>
                 </a>
                 <ul class="sub">
-                    <li><a href="profile.html">S'authentifier</a></li>
+                    <li><a  href="{{ path('ajout_etudiant') }}">Ajout Etudiant</a></li>
                 </ul>
             </li>
             <li class="sub-menu">
@@ -71,7 +71,6 @@
     </div>
 </aside>
 <!--sidebar end-->
-<body>
 
 <!--header start-->
 <header class="header black-bg">
@@ -146,7 +145,7 @@
                                 </div>
                             </div>
                         </a>
-                    </li
+                    </li>
                     <li class="external">
                         <a href="#">See All Tasks</a>
                     </li>
@@ -272,15 +271,17 @@
         </ul>
     </div>
 </header>
+
+{% block body %}
 <!--header end-->
-<section id="container">
+   <section id="container">
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper col-md-8  navbar-collapse">
             <div class="center-block">
                 <div class="col-xs-offset-0 col-xs-14">
                     <div class="row content-panel">
-                        {% block ferdawes %} {% endblock %}
+                        {% block ferdawes %} kjsuih{% endblock %}
                     </div>
                     <!-- /row -->
                 </div>
@@ -300,6 +301,7 @@
         <!--footer end-->
     </section>
 </section>
+{% endblock %}
 
 {% block javascripts %}
 
@@ -337,6 +339,4 @@
         });
     </script>
 {% endblock %}
-
-</body>
 </html>

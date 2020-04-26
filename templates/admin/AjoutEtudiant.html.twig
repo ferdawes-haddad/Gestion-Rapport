@@ -1,0 +1,32 @@
+
+
+{% block title %}Inscription d'Etudiant{% endblock %}
+
+{% block body %}
+
+  <form action="" method="post" >
+
+    <fieldset>
+      <legend>Ajout Etudiant :</legend>
+      <table>
+        <tr>
+          <td><label for="nom">Nom :</label></td>
+          <td><label for="prénom">Prénom :</label></td>
+          <td><label for="email"> email :</label></td>
+        </tr>
+        <tr>
+          <td><input type="nom" name="nom" size="20" maxlength="40" value="nom" id="nom" /></td>
+          <td><input type="prenom" name="prenom" size="20" maxlength="40" value="prenom" id="email" /></td>
+          <td><input type="email" name="email" size="20" maxlength="40" value="email" id="email" /></td>
+        </tr>
+      </table>
+    </fieldset>
+
+    <p>
+      <input type="submit" value="Envoyer" />
+      <input type="reset" value="Annuler" />
+    </p>
+
+  </form>
+
+{% endblock %}
