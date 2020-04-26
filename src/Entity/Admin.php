@@ -31,6 +31,16 @@ class Admin
      */
     private $mail;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Admin", inversedBy="etudiants")
+     */
+    private $etudiant;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Admin", inversedBy="enseignants")
+     */
+    private $enseignant;
+
     public function getId(): ?int
     {
         return $this->id;

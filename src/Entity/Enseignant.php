@@ -31,6 +31,11 @@ class Enseignant
      */
     private $mail;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Enseignant", mappedBy="enseignant")
+     */
+    private $enseignants;
+
     public function getId(): ?int
     {
         return $this->id;
