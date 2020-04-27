@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
  */
 class User implements UserInterface
 {
@@ -43,7 +45,7 @@ class User implements UserInterface
      *
      * @see UserInterface
      */
-    public function getUsername(): string
+   public function getUsername(): string
     {
         return (string) $this->username;
     }
@@ -105,5 +107,7 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+
 
 }
