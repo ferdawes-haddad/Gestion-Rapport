@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,15 +32,18 @@ class Admin
      */
     private $mail;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Admin", inversedBy="etudiants")
-     */
-    private $etudiant;
+    /** @ORM\Column(type="datetime") */
+    private $dateDepos;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Admin", inversedBy="enseignants")
+     * @ORM\OneToMany(targetEntity="Etudiant", mappedBy="admin")
      */
-    private $enseignant;
+    private $etudiants;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Enseignant", mappedBy="admin")
+     */
+    private $enseignants;
 
     public function getId(): ?int
     {
@@ -81,4 +85,59 @@ class Admin
 
         return $this;
     }
+
+    public function getDateDepos()
+    {
+        return $this->dateDepos;
+    }
+
+    public function setDateDepos($dateDepos): void
+    {
+        $this->dateDepos = $dateDepos;
+
+        // WILL be saved in the database
+        //$this->updated = new \DateTime("now");
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getEtudiants(): ArrayCollection
+    {
+        return $this->etudiants;
+    }
+
+    /**
+     * @param ArrayCollection $etudiants
+     */
+    public function setEtudiants(ArrayCollection $etudiants): void
+    {
+        $this->etudiants = $etudiants;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getEnseignants(): ArrayCollection
+    {
+        return $this->enseignants;
+    }
+
+    /**
+     * @param ArrayCollection $enseignants
+     */
+    public function setEnseignants(ArrayCollection $enseignants): void
+    {
+        $this->enseignants = $enseignants;
+    }
+
+
+    public function __constructEtudiannt() {
+        $this->etudiants = new ArrayCollection();
+    }
+
+    public function __constructEnseignant() {
+        $this->enseignants = new ArrayCollection();
+    }
+
 }

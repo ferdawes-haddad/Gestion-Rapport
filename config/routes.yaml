@@ -4,4 +4,8 @@
 
 ajout_etudiant:
   path:       /ajoutEtudiant
-  controller: App\Controller\AdminController::AjoutEtudiant
+  controller: App\Controller\EtudiantController::new
+
+ajout_enseignant:
+  path:       /ajout
+  controller: App\Controller\EnseignantController::new

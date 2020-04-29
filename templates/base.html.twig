@@ -35,6 +35,9 @@
                     <ul class="sub">
                         <li><a  href="{{ path('ajout_etudiant') }}">Ajout Etudiant</a></li>
                     </ul>
+                    <ul class="sub">
+                        <li><a  href="{{ path('ajout_enseignant') }}">Ajout Enseignant</a></li>
+                    </ul>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
@@ -286,13 +289,18 @@
 <!--header end-->
    <section id="container">
     <!--main content start-->
-    <section id="main-content">
+    <section id="main-content" class="wrapper">
         {% block body %}
-        <section class="wrapper col-md-12 navbar-collapse">
+        <section class="wrapper col-md-12 navbar-collapse ">
             <div class="center-block">
                 <div class="col-xs-offset-0 col-xs-14">
                     <div class="row content-panel">
-                        {% block ferdawes %} kjsuih{% endblock %}
+                        <div class="col-lg-14">
+                            <div class="row content-panel" style="margin-right: unset; margin-left: unset">
+                                <img src="{{ asset('Template/img/diplome.jpg') }}" style="vertical-align: super;" height="500px" align="center">
+                            </div>
+                            <!-- /row -->
+                        </div>
                     </div>
                     <!-- /row -->
                 </div>

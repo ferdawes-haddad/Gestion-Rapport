@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,6 +21,11 @@ class Section
      * @ORM\Column(type="string", length=255)
      */
     private $section;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Rapport", mappedBy="sections")
+     */
+    private $classes;
 
     public function getId(): ?int
     {
@@ -41,5 +47,9 @@ class Section
     public function __toString()
     {
         return $this->getSection();
+    }
+
+    public function __construct() {
+        $this->classess = new ArrayCollection();
     }
 }

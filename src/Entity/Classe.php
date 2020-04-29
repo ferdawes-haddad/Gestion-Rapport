@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,7 +23,12 @@ class Classe
     private $classe;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Section")
+     * @ORM\OneToMany(targetEntity="Rapport", mappedBy="classes")
+     */
+    private $rapports;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Section", inversedBy="classes")
      */
     private $sections;
 
@@ -62,6 +68,10 @@ class Classe
     public function __toString()
     {
         return $this->getSections();
+    }
+
+    public function __construct() {
+        $this->rapports = new ArrayCollection();
     }
 
 }
