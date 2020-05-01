@@ -32,19 +32,19 @@ class Rapport
     private $note;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Enseignant")
+     * @ORM\ManyToOne(targetEntity="Enseignant", inversedBy="rapports")
      */
     private $enseignants;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Etudiant")
+     * @ORM\ManyToOne(targetEntity="Etudiant", inversedBy="rapports")
      */
     private $etudiants;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Classe")
+     * @ORM\ManyToOne(targetEntity="Classe", inversedBy="rapports")
      */
-    private $classe;
+    private $classes;
 
     public function getId(): ?int
     {
@@ -124,18 +124,15 @@ class Rapport
      */
     public function getClasse()
     {
-        return $this->classe;
+        return $this->classes;
     }
 
     /**
-     * @param mixed $classe
+     * @param mixed $classes
      */
-    public function setClasse($classe): void
+    public function setClasses($classes): void
     {
-        $this->classe = $classe;
+        $this->classes = $classes;
     }
-
-
-
 
 }

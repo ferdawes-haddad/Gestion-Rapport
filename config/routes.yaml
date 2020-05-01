@@ -1,7 +1,11 @@
 #index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+#  path: /login
+#  controller: App\Controller\DefaultController::index
 
 ajout_etudiant:
   path:       /ajoutEtudiant
-  controller: App\Controller\AdminController::AjoutEtudiant
+  controller: App\Controller\EtudiantController::new
+
+ajout_enseignant:
+  path:       /ajout
+  controller: App\Controller\EnseignantController::new

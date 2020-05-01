@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,9 +33,14 @@ class Enseignant
     private $mail;
 
     /**
-     * @ORM\OneToMany(targetEntity="Enseignant", mappedBy="enseignant")
+     * @ORM\ManyToOne(targetEntity="Admin", inversedBy="enseignants")
      */
-    private $enseignants;
+    private $admin;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Rapport", mappedBy="enseignants")
+     */
+    private $rapports;
 
     public function getId(): ?int
     {
@@ -75,5 +81,9 @@ class Enseignant
         $this->mail = $mail;
 
         return $this;
+    }
+
+    public function __construct() {
+        $this->rapports = new ArrayCollection();
     }
 }

@@ -19,58 +19,68 @@
 
 </head>
 <!--sidebar start-->
-<aside>
-    <div id="sidebar" class="nav-collapse ">
-        <!-- sidebar menu start-->
-        <ul class="sidebar-menu" id="nav-accordion">
-            <p class="centered"><a href="profile.html"><img src="{{ asset('Template/img/sesam.jpg') }}" class="img-circle" width="80"></a></p>
-            <h5 class="centered">Sesame</h5>
+{% block sidebar %}
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <p class="centered"><a href="profile.html"><img src="{{ asset('Template/img/sesam.jpg') }}" class="img-circle" width="80"></a></p>
+                <h5 class="centered">Sesame</h5>
 
-            <li class="sub-menu">
-                <a href="javascript:;">
-                    <i class="fa fa-desktop"></i>
-                    <span>Espace Administration</span>
-                </a>
-                <ul class="sub">
-                    <li><a  href="{{ path('ajout_etudiant') }}">Ajout Etudiant</a></li>
-                </ul>
-            </li>
-            <li class="sub-menu">
-                <a href="javascript:;">
-                    <i class="fa fa-tasks"></i>
-                    <span>Espace Etudiants</span>
-                </a>
-                <ul class="sub">
-                    <li><a href="profile.html">S'authentifier</a></li>
-                </ul>
-            </li>
-            <li class="sub-menu">
-                <a href="javascript:;">
-                    <i class="fa fa-tasks"></i>
-                    <span>Espace Enseignants</span>
-                </a>
-                <ul class="sub">
-                    <li><a href="profile.html">S'authentifier</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="inbox.html">
-                    <i class="fa fa-envelope"></i>
-                    <span>Mail </span>
-                    <span class="label label-theme pull-right mail-info">2</span>
-                </a>
-            </li>
-            <li>
-                <a href="google_maps.html">
-                    <i class="fa fa-map-marker"></i>
-                    <span>Google Maps </span>
-                </a>
-            </li>
-        </ul>
-        <!-- sidebar menu end-->
-    </div>
-</aside>
-<!--sidebar end-->
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-desktop"></i>
+                        <span>Espace Administration</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="{{ path('ajout_etudiant') }}">Ajout Etudiant</a></li>
+                    </ul>
+                    <ul class="sub">
+                        <li><a  href="{{ path('ajout_enseignant') }}">Ajout Enseignant</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-tasks"></i>
+                        <span><a href="{{ path('app_login') }}">Espace Etudiants</a></span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-tasks"></i>
+                        <span>Espace Enseignants</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ path('app_login') }}">Encadrant</a></li>
+                    </ul>
+                    <ul class="sub">
+                        <li><a href="{{ path('app_login') }}">Raporteur</a></li>
+                    </ul>
+                    <ul class="sub">
+                        <li><a href="{{ path('app_login') }}">Jury</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="inbox.html">
+                        <i class="fa fa-envelope"></i>
+                        <span>Mail </span>
+                        <span class="label label-theme pull-right mail-info">2</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="google_maps.html">
+                        <i class="fa fa-map-marker"></i>
+                        <span>Google Maps </span>
+                    </a>
+                </li>
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+{% endblock %}
+
+<!--sidebar
+ end-->
 
 <!--header start-->
 <header class="header black-bg">
@@ -272,16 +282,22 @@
     </div>
 </header>
 
-{% block body %}
+
 <!--header end-->
    <section id="container">
     <!--main content start-->
-    <section id="main-content">
-        <section class="wrapper col-md-8  navbar-collapse">
+    <section id="main-content" class="wrapper">
+        {% block body %}
+        <section class="wrapper col-md-12 navbar-collapse ">
             <div class="center-block">
                 <div class="col-xs-offset-0 col-xs-14">
                     <div class="row content-panel">
-                        {% block ferdawes %} kjsuih{% endblock %}
+                        <div class="col-lg-14">
+                            <div class="row content-panel" style="margin-right: unset; margin-left: unset">
+                                <img src="{{ asset('Template/img/diplome.jpg') }}" style="vertical-align: super;" height="500px" align="center">
+                            </div>
+                            <!-- /row -->
+                        </div>
                     </div>
                     <!-- /row -->
                 </div>
@@ -299,9 +315,10 @@
             </div>
         </footer>
         <!--footer end-->
+        {% endblock %}
     </section>
 </section>
-{% endblock %}
+
 
 {% block javascripts %}
 
