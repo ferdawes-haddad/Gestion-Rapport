@@ -46,8 +46,6 @@ class EtudiantController extends AbstractController
             'etudiant' => $etudiant,
             'form' => $form->createView(),
         ]);
-        $this->denyAccessUnlessGranted('ROLE_USER');
-
     }
 
     /**
