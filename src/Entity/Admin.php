@@ -32,6 +32,15 @@ class Admin
      */
     private $mail;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @ORM\Assert\NotBlank(message="Ajouter une image jpg")
+     * @ORM\Assert\File(mimeTypes={ "image/jpeg" })
+     */
+    private $document;
+
+
     /** @ORM\Column(type="datetime") */
     private $dateDepos;
 
@@ -131,7 +140,6 @@ class Admin
         $this->enseignants = $enseignants;
     }
 
-
     public function __constructEtudiannt() {
         $this->etudiants = new ArrayCollection();
     }
@@ -139,5 +147,23 @@ class Admin
     public function __constructEnseignant() {
         $this->enseignants = new ArrayCollection();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDocument()
+    {
+        return $this->document;
+    }
+
+    /**
+     * @param mixed $document
+     */
+    public function setDocument($document): void
+    {
+        $this->document = $document;
+    }
+
+
 
 }

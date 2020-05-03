@@ -19,10 +19,6 @@ class User implements UserInterface
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255, unique=true)
-     */
-    private $email;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
@@ -45,15 +41,7 @@ class User implements UserInterface
         return $this->id;
     }
 
-    public function getEmail()
-    {
-        return $this->email;
-    }
 
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
 
     /**
      * A visual identifier that represents this user.
@@ -62,7 +50,7 @@ class User implements UserInterface
      */
     public function getUsername()
     {
-        return $this->email;
+        return $this->username;
     }
 
     public function setUsername(string $username): self
@@ -79,7 +67,7 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        //$roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
