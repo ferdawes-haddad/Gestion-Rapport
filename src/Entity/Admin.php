@@ -20,26 +20,7 @@ class Admin
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $prenom;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $mail;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @ORM\Assert\NotBlank(message="Ajouter une image jpg")
-     * @ORM\Assert\File(mimeTypes={ "image/jpeg" })
-     */
     private $document;
-
 
     /** @ORM\Column(type="datetime") */
     private $dateDepos;
@@ -59,42 +40,6 @@ class Admin
         return $this->id;
     }
 
-    public function getNom(): ?string
-    {
-        return $this->nom;
-    }
-
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getPrenom(): ?string
-    {
-        return $this->prenom;
-    }
-
-    public function setPrenom(string $prenom): self
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
-
-    public function getMail(): ?string
-    {
-        return $this->mail;
-    }
-
-    public function setMail(string $mail): self
-    {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
     public function getDateDepos()
     {
         return $this->dateDepos;
@@ -108,33 +53,31 @@ class Admin
         //$this->updated = new \DateTime("now");
     }
 
-    /**
-     * @return ArrayCollection
-     */
+    public function getDocument()
+    {
+        return $this->document;
+    }
+
+    public function setDocument($document): void
+    {
+        $this->document = $document;
+    }
+
     public function getEtudiants(): ArrayCollection
     {
         return $this->etudiants;
     }
 
-    /**
-     * @param ArrayCollection $etudiants
-     */
     public function setEtudiants(ArrayCollection $etudiants): void
     {
         $this->etudiants = $etudiants;
     }
 
-    /**
-     * @return ArrayCollection
-     */
     public function getEnseignants(): ArrayCollection
     {
         return $this->enseignants;
     }
 
-    /**
-     * @param ArrayCollection $enseignants
-     */
     public function setEnseignants(ArrayCollection $enseignants): void
     {
         $this->enseignants = $enseignants;
@@ -147,23 +90,5 @@ class Admin
     public function __constructEnseignant() {
         $this->enseignants = new ArrayCollection();
     }
-
-    /**
-     * @return mixed
-     */
-    public function getDocument()
-    {
-        return $this->document;
-    }
-
-    /**
-     * @param mixed $document
-     */
-    public function setDocument($document): void
-    {
-        $this->document = $document;
-    }
-
-
 
 }

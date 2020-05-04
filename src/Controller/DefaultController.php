@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/index", name="default")
+     * @Route("/base", name="default")
      */
     public function index()
     {
