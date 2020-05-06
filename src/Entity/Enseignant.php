@@ -51,11 +51,9 @@ class Enseignant
     {
         return $this->nom;
     }
-
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -63,11 +61,9 @@ class Enseignant
     {
         return $this->prenom;
     }
-
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
-
         return $this;
     }
 
@@ -75,11 +71,9 @@ class Enseignant
     {
         return $this->mail;
     }
-
     public function setMail(string $mail): self
     {
         $this->mail = $mail;
-
         return $this;
     }
 

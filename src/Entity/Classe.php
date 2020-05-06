@@ -41,7 +41,6 @@ class Classe
     {
         return $this->classe;
     }
-
     public function setClasse(int $classe): self
     {
         $this->classe = $classe;
@@ -49,17 +48,10 @@ class Classe
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getSections()
     {
         return $this->sections;
     }
-
-    /**
-     * @param mixed $sections
-     */
     public function setSections($sections): void
     {
         $this->sections = $sections;

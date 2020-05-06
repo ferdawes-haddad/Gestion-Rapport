@@ -3,24 +3,24 @@
 {% block title %}Admin index{% endblock %}
 
 {% block body %}
-    <h1>Admin index</h1>
 
-    <table class="table">
+<div class="wrapper">
+    <div class="dashboard-headline">
+    <div class="table-responsive ">
+        <table class="table table-shopping">
+
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Document</th>
-            <th>DateDepos</th>
-            <th>actions</th>
+            <th class="text-center">Document</th>
+            <th class="text-center">DateDepos</th>
         </tr>
         </thead>
         <tbody>
-        {% for admin in admin %}
+        {% for admin in admins %}
             <tr>
-                <td>{{ admin.id }}</td>
-                <td>{{ admin.document }}</td>
-                <td>{{ admin.dateDepos ? admin.dateDepos|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
+                <td class="text-center">{{ admin.document }}</td>
+                <td class="text-center">{{ admin.dateDepos ? admin.dateDepos|date('Y-m-d H:i:s') : '' }}</td>
+                <td class="text-center">
                     <a href="{{ path('admin_show', {'id': admin.id}) }}">show</a>
                     <a href="{{ path('admin_edit', {'id': admin.id}) }}">edit</a>
                 </td>
@@ -31,7 +31,13 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
 
-    <a href="{{ path('admin_new') }}">Create new</a>
+    </table>
+    </div>
+        <a href="{{ path('admin_new') }}">Ajouter</a>
+    </div>
+</div>
+
+
+
 {% endblock %}

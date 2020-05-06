@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/rapport")
@@ -26,6 +28,7 @@ class RapportController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/new", name="rapport_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -35,9 +38,18 @@ class RapportController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($rapport);
-            $entityManager->flush();
+//            $entityManager = $this->getDoctrine()->getManager();
+//            $entityManager->persist($rapport);
+//            $entityManager->flush();
+
+            $file = $rapport->getTitre();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('upload_directory'),$fileName);
+            $rapport->setTitre($fileName);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($rapport);
+            $em->flush();
 
             return $this->redirectToRoute('rapport_index');
         }
@@ -90,5 +102,17 @@ class RapportController extends AbstractController
         }
 
         return $this->redirectToRoute('rapport_index');
+    }
+
+    /**
+     * Liste des rapports
+     * @Route("/list", name="list_rapports")
+     */
+    public function listRapport(RapportRepository $rapports){
+
+        return $this->render('rapport/list.html.twig',[
+            'rapports'=> $rapports->findAll()
+        ]);
+
     }
 }

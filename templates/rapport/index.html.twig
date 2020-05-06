@@ -11,7 +11,7 @@
                 <th>Id</th>
                 <th>Titre</th>
                 <th>Description</th>
-                <th>Note</th>
+
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,7 +21,6 @@
                 <td>{{ rapport.id }}</td>
                 <td>{{ rapport.titre }}</td>
                 <td>{{ rapport.description }}</td>
-                <td>{{ rapport.note }}</td>
                 <td>
                     <a href="{{ path('rapport_show', {'id': rapport.id}) }}">show</a>
                     <a href="{{ path('rapport_edit', {'id': rapport.id}) }}">edit</a>
@@ -35,5 +34,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('rapport_new') }}">Create new</a>
+    <a href="{{ path('rapport_new') }}" class="btn btn-default">Ajouter un rapport</a>
 {% endblock %}

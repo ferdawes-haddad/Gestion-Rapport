@@ -3,18 +3,23 @@
 {% block title %}New Etudiant{% endblock %}
 
 {% block body %}
-    <h1>Create new Etudiant</h1>
+    <h1>Ajout un Etudiant</h1>
+
 
     <form action="" method="post" >
-
+ <div class="wraper">
         <fieldset>
-            <legend>Ajout Etudiant :</legend>
+
             <table>
-                {{ include('etudiant/_form.html.twig') }}
+                <div class="form-row">
+                    <div class="col">
+                        {{ include('etudiant/_form.html.twig') }}
+                    </div>
+                </div>
             </table>
         </fieldset>
 
-
+ </div>
     </form>
 
 

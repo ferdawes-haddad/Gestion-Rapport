@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,19 +29,14 @@ class Rapport
     private $description;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $note;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Enseignant", inversedBy="rapports")
      */
     private $enseignants;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Etudiant", inversedBy="rapports")
-     */
-    private $etudiants;
+//    /**
+//     * @ORM\ManyToOne(targetEntity="Etudiant", inversedBy="rapports")
+//     */
+//    private $etudiants;
 
     /**
      * @ORM\ManyToOne(targetEntity="Classe", inversedBy="rapports")
@@ -51,15 +48,13 @@ class Rapport
         return $this->id;
     }
 
-    public function getTitre(): ?string
+    public function getTitre()
     {
         return $this->titre;
     }
-
-    public function setTitre(string $titre): self
+    public function setTitre($titre)
     {
         $this->titre = $titre;
-
         return $this;
     }
 
@@ -67,7 +62,6 @@ class Rapport
     {
         return $this->description;
     }
-
     public function setDescription(string $description): self
     {
         $this->description = $description;
@@ -75,64 +69,34 @@ class Rapport
         return $this;
     }
 
-    public function getNote(): ?int
-    {
-        return $this->note;
-    }
-
-    public function setNote(int $note): self
-    {
-        $this->note = $note;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEnseignants()
+    public function getEnseignants(): Collection
     {
         return $this->enseignants;
     }
-
-    /**
-     * @param mixed $enseignants
-     */
     public function setEnseignants($enseignants): void
     {
         $this->enseignants = $enseignants;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getEtudiants()
-    {
-        return $this->etudiants;
-    }
-
-    /**
-     * @param mixed $etudiants
-     */
-    public function setEtudiants($etudiants): void
-    {
-        $this->etudiants = $etudiants;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getClasse()
+    public function getClasses()
     {
         return $this->classes;
     }
-
-    /**
-     * @param mixed $classes
-     */
     public function setClasses($classes): void
     {
         $this->classes = $classes;
     }
+
+//    public function getEtudiants(): ?string
+//    {
+//        return $this->etudiants;
+//    }
+//    public function setEtudiants($etudiants): void
+//    {
+//        $this->etudiants = $etudiants;
+//    }
+
+
+
 
 }

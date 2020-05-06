@@ -37,10 +37,10 @@ class Etudiant
      */
     private $admin;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Rapport", mappedBy="etudiants")
-     */
-    private $rapports;
+//    /**
+//     * @ORM\OneToMany(targetEntity="Rapport", mappedBy="etudiants")
+//     */
+//    private $rapports;
 
     public function getId(): ?int
     {
@@ -51,7 +51,6 @@ class Etudiant
     {
         return $this->nom;
     }
-
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
@@ -63,7 +62,6 @@ class Etudiant
     {
         return $this->prenom;
     }
-
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
@@ -75,7 +73,6 @@ class Etudiant
     {
         return $this->mail;
     }
-
     public function setMail(string $mail): self
     {
         $this->mail = $mail;

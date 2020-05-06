@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/etudiant")
@@ -16,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class EtudiantController extends AbstractController
 {
     /**
-     * @Route("/indexEtudiant", name="etudiant_index", methods={"GET"})
+     * @Route("/", name="etudiant_index", methods={"GET"})
      */
     public function index(EtudiantRepository $etudiantRepository): Response
     {
@@ -26,6 +28,7 @@ class EtudiantController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/new", name="etudiant_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

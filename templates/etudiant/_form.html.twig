@@ -1,5 +1,16 @@
-{{ form_start(form) }}
+<div class="form-group">
+    {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-    <button class="btn">{{ button_label|default('Cancel') }}</button>
-{{ form_end(form) }}
+    <div class="form-row">
+        <div class="col">
+            <button class="btn">{{ button_label|default('Ajout') }}</button>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col">
+            <button class="btn">{{ button_label|default('Annuler') }}</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+</div>
+
