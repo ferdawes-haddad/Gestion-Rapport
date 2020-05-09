@@ -3,9 +3,12 @@
 {% block title %}New Enseignant{% endblock %}
 
 {% block body %}
-    <h1>Create new Enseignant</h1>
+    <h1>Ajouter un Enseignant</h1>
+
+    <div class="example-wrapper">
 
     {{ include('enseignant/_form.html.twig') }}
 
-    <a href="{{ path('enseignant_index') }}">back to list</a>
+    <a href="{{ path('enseignant_index') }}" class="btn btn-default" style="background: cadetblue">Voir la list des enseignants</a>
+</div>
 {% endblock %}

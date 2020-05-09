@@ -6,22 +6,10 @@
     <h1>Ajout un Etudiant</h1>
 
 
-    <form action="" method="post" >
- <div class="wraper">
-        <fieldset>
+    <div class="example-wrapper">
 
-            <table>
-                <div class="form-row">
-                    <div class="col">
-                        {{ include('etudiant/_form.html.twig') }}
-                    </div>
-                </div>
-            </table>
-        </fieldset>
+        {{ include('etudiant/_form.html.twig') }}
 
- </div>
-    </form>
-
-
-    <a href="{{ path('etudiant_index') }}" class="btn btn-default">back to list</a>
+        <a href="{{ path('etudiant_index') }}" class="btn btn-default" style="background: cadetblue">Voir la list des etudiants</a>
+    </div>
 {% endblock %}

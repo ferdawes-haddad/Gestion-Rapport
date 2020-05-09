@@ -3,6 +3,11 @@
 {% block title %}Enseignant{% endblock %}
 
 {% block body %}
+    <style>
+        .example-wrapper { margin: auto; max-width: 500px; width: 10%; font: 20px/1.5 sans-serif; }
+        .example-wrapper code { background: #d2959b; padding: 2px 6px; }
+    </style>
+
     <h1>Enseignant</h1>
 
     <table class="table">
@@ -22,9 +27,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('enseignant_index') }}">back to list</a>
+    <a href="{{ path('enseignant_index') }}"class="btn btn-default glyphicon glyphicon-list" style="background: #5eb5e0"></a>
 
-    <a href="{{ path('enseignant_edit', {'id': enseignant.id}) }}">edit</a>
+    <a href="{{ path('enseignant_edit', {'id': enseignant.id}) }}"class="btn btn-default glyphicon glyphicon-edit" style="background: #5eb5e0"></a>
 
     {{ include('enseignant/_delete_form.html.twig') }}
 {% endblock %}

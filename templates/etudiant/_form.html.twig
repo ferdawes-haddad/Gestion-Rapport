@@ -1,16 +1,23 @@
-<div class="form-group">
+{% block body %}
+
+    <style>
+        .example-wrapper { margin: auto; max-width: 1200px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #d2959b; padding: 2px 6px; }
+    </style>
+
     {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <div class="form-row">
-        <div class="col">
-            <button class="btn">{{ button_label|default('Ajout') }}</button>
-        </div>
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
     </div>
-    <div class="form-row">
-        <div class="col">
-            <button class="btn">{{ button_label|default('Annuler') }}</button>
+
+    <div class="form">
+        <div class="form-group"> {{ form_row(form.nom) }} </div>
+        <div class="form-group"> {{ form_row(form.prenom) }} </div>
+        <div class="form-group"> {{ form_row(form.mail) }} </div>
+        <div class="col" id="some-custom-id">
+            <button class="btn btn-default " style="background: #d2959b">{{ button_label|default('Ajouter etudiant') }}</button>
         </div>
     </div>
     {{ form_end(form) }}
-</div>
+{% endblock %}
 

@@ -4,14 +4,16 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper { margin: 0em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    thead {color:indianred;}
+    tbody {color:black;}
+    tfoot {color:red;}
 </style>
 
-    <div class=" example-wrapper" >
-    <div class="dashboard-headline">
+<div class="example-wrapper">
 
-    <table class="table"  >
+   <table class="table"  >
         <thead>
             <tr>
                 <th><div class="form-check" >Titre</div></th>
@@ -23,21 +25,22 @@
         {% for rapport in rapports %}
             <tr>
                 <td><div class="form-check"> {{ rapport.titre }}</div></td>
-                <td ><div class="form-check"> {{ rapport.description }}</div></td>
-                <td ><div class="form-check">
+                <td><div class="form-check"> {{ rapport.description }}</div></td>
+                <td><div class="form-check">
                     <a href="{{ path('rapport_show', {'id': rapport.id}) }}" class="glyphicon glyphicon-list"></a>
-                    <a href="{{ path('rapport_edit', {'id': rapport.id}) }}" class="glyphicon glyphicon-edit"></a></div>
-                </td>
+                    <a href="{{ path('rapport_edit', {'id': rapport.id}) }}" class="glyphicon glyphicon-edit"></a>
+                    <a>{{ include('rapport/_delete_form.html.twig') }}    </a>   </div>         </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5"> Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    </div>
-    </div>
 
-    <a href="{{ path('rapport_new') }}" class="btn btn-default " style="background: antiquewhite">Ajouter un rapport</a>
+</div>
+
+    <a href="{{ path('rapport_new') }}" class="btn btn-default " style="background: #d2959b">Ajouter un rapport</a>
+
 {% endblock %}

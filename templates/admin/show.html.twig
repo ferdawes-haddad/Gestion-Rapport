@@ -3,14 +3,14 @@
 {% block title %}Admin{% endblock %}
 
 {% block body %}
-    <h1>Admin</h1>
+    <style>
+        .example-wrapper { margin: auto; max-width: 500px; width: 10%; font: 20px/1.5 sans-serif; }
+        .example-wrapper code { background: #d2959b; padding: 2px 6px; }
+    </style>
 
+<div class="form wrapper">
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ admin.id }}</td>
-            </tr>
             <tr>
                 <th>Document</th>
                 <td>{{ admin.document }}</td>
@@ -21,10 +21,10 @@
             </tr>
         </tbody>
     </table>
+</div>
 
-    <a href="{{ path('admin_index') }}">back to list</a>
-
-    <a href="{{ path('admin_edit', {'id': admin.id}) }}">edit</a>
+    <a href="{{ path('admin_pdf') }}"class="btn btn-default glyphicon glyphicon-list" style="background: #5eb5e0"></a>
+    <a href="{{ path('admin_edit', {'id': admin.id}) }}"class="btn btn-default glyphicon glyphicon-edit" style="background: #5eb5e0"></a>
 
     {{ include('admin/_delete_form.html.twig') }}
 {% endblock %}

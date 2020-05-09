@@ -3,26 +3,36 @@
 {% block title %}Enseignant index{% endblock %}
 
 {% block body %}
+    <style>
+        .example-wrapper { margin: 0em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        thead {color:indianred;}
+        tbody {color:black;}
+        tfoot {color:red;}
+    </style>
+<div class="example-wrapper">
     <h1  style="align-content: center">List Enseignant </h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Mail</th>
-                <th>actions</th>
+                <th><div class="form-check" >Nom</div></th>
+                <th><div class="form-check" >Prenom</div></th>
+                <th><div class="form-check" >Mail</div></th>
+                <th><div class="form-check" ></div>></th>
             </tr>
         </thead>
         <tbody>
         {% for enseignant in enseignants %}
             <tr>
-                <td>{{ enseignant.nom }}</td>
-                <td>{{ enseignant.prenom }}</td>
-                <td>{{ enseignant.mail }}</td>
+                <td><div class="form-check">{{ enseignant.nom }}</div></td>
+                <td><div class="form-check">{{ enseignant.prenom }}</div></td>
+                <td><div class="form-check">{{ enseignant.mail }}</div></td>
                 <td>
-                    <a href="{{ path('enseignant_show', {'id': enseignant.id}) }}">show</a>
-                    <a href="{{ path('enseignant_edit', {'id': enseignant.id}) }}">edit</a>
+                    <div class="form-check">
+                    <a href="{{ path('enseignant_show', {'id': enseignant.id}) }}" class="glyphicon glyphicon-list"></a>
+                    <a href="{{ path('enseignant_edit', {'id': enseignant.id}) }}" class="glyphicon glyphicon-edit"></a>
+                    <a>{{ include('enseignant/_delete_form.html.twig') }}    </a>   </div>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +43,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('enseignant_new') }}" style="background: antiquewhite">Ajouter un enseignant</a>
+    <a href="{{ path('enseignant_new') }}" class="btn btn-default " style="background: antiquewhite">Ajouter un enseignant</a>
 {% endblock %}

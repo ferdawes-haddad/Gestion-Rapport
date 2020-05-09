@@ -3,17 +3,20 @@
 {% block title %}Rapport{% endblock %}
 
 {% block body %}
+
+    <style>
+        .example-wrapper { margin: auto; max-width: 500px; width: 10%; font: 20px/1.5 sans-serif; }
+        .example-wrapper code { background: #d2959b; padding: 2px 6px; }
+    </style>
     <h1>Rapport</h1>
 
+<div class="form wrapper">
     <table class="table">
         <tbody>
+
             <tr>
-                <th>Id</th>
-                <td>{{ rapport.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ rapport.titre }}</td>
+                <div class="form-group"> <th>Titre</th></div>
+                <div class="form-group"><td>{{ rapport.titre }}</td></div>
             </tr>
             <tr>
                 <th>Description</th>
@@ -22,10 +25,10 @@
 
         </tbody>
     </table>
+</div>
 
-    <a href="{{ path('rapport_index') }}">back to list</a>
 
-    <a href="{{ path('rapport_edit', {'id': rapport.id}) }}">edit</a>
-
-    {{ include('rapport/_delete_form.html.twig') }}
+    <a href="{{ path('rapport_index') }}" class="btn btn-default glyphicon glyphicon-list" style="background: #5eb5e0"></a>
+    <a href="{{ path('rapport_edit', {'id': rapport.id}) }}"  class="btn btn-default glyphicon glyphicon-edit" style="background: #5eb5e0"></a>
+    <a>{{ include('rapport/_delete_form.html.twig') }}</a>
 {% endblock %}

@@ -4,17 +4,16 @@
 
 {% block body %}
     <style>
-        .example-wrapper { margin: 1em auto; max-width: 1200px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #d2959b; padding: 2px 6px; }
+        .example-wrapper { margin: 0em auto; max-width: 1200px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #d2959b; padding: 1px 2px; }
     </style>
     <h1>Ajouter votre Rapport</h1>
 
-<div class=" example-wrapper">
-    <div class="input-group ">
+<div class="example-wrapper">
 
     {{ include('rapport/_form.html.twig') }}
 
-    <a href="{{ path('rapport_index') }}" class="btn btn-default">back to list</a>
-    </div>
-<div
+    <a href="{{ path('rapport_index') }}" class="btn btn-default" style="background: cadetblue">Voir la list</a>
+</div>
+
 {% endblock %}

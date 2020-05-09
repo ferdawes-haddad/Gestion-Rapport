@@ -3,38 +3,46 @@
 {% block title %}Admin index{% endblock %}
 
 {% block body %}
+<style>
+    .example-wrapper { margin: 0em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    thead {color:indianred;}
+    tbody {color:black;}
+    tfoot {color:red;}
+</style>
 
-<div class="wrapper">
+<div class="example-wrapper">
+
     <div class="dashboard-headline">
     <div class="table-responsive ">
         <table class="table table-shopping">
 
         <thead>
         <tr>
-            <th class="text-center">Document</th>
-            <th class="text-center">DateDepos</th>
+            <th class="form-check">Document</th>
+            <th class="form-check">DateDepos</th>
         </tr>
         </thead>
         <tbody>
         {% for admin in admins %}
             <tr>
-                <td class="text-center">{{ admin.document }}</td>
-                <td class="text-center">{{ admin.dateDepos ? admin.dateDepos|date('Y-m-d H:i:s') : '' }}</td>
-                <td class="text-center">
-                    <a href="{{ path('admin_show', {'id': admin.id}) }}">show</a>
-                    <a href="{{ path('admin_edit', {'id': admin.id}) }}">edit</a>
+                <td class="form-check">{{ admin.document }}</td>
+                <td class="form-check">{{ admin.dateDepos ? admin.dateDepos|date('Y-m-d H:i:s') : '' }}</td>
+                <td class="form-check">
+                    <a href="{{ path('admin_show', {'id': admin.id}) }}"class="glyphicon glyphicon-list"></a>
+                    <a href="{{ path('admin_edit', {'id': admin.id}) }}"class="glyphicon glyphicon-edit"></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
 
     </table>
     </div>
-        <a href="{{ path('admin_new') }}">Ajouter</a>
+        <a href="{{ path('admin_new') }}"class="btn btn-default " style="background: #d2959b">Ajouter un dossier</a>
     </div>
 </div>
 

@@ -27,6 +27,14 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/dossier", name="admin_pdf", methods={"GET"})
+     */
+    public function MyPdf(AdminRepository $adminRepository): Response
+    {
+        return $this->render('admin/mypdf.html.twig', ['admins' => $adminRepository->findAll(),]);
+    }
+
+    /**
      * @IsGranted("ROLE_ADMIN")
      * @Route("/new", name="admin_new", methods={"GET","POST"})
      */
@@ -46,7 +54,7 @@ class AdminController extends AbstractController
             $file->move($this->getParameter('upload_directory'), $fileName);
             $admin->setDocument($fileName);
 
-            return $this->redirectToRoute('admin_index');
+            return $this->redirectToRoute('admin_pdf');
         }
 
         return $this->render('admin/new.html.twig', ['admin' => $admin,'form' => $form->createView(),]);

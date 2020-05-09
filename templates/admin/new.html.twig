@@ -3,9 +3,12 @@
 {% block title %}New Admin{% endblock %}
 
 {% block body %}
-    <h1>Create new Admin</h1>
+    <h1>Ajouter un dossier</h1>
+
+<div class="example-wrapper">
 
     {{ include('admin/_form.html.twig') }}
 
-    <a href="{{ path('admin_index') }}">back to list</a>
+    <a href="{{ path('admin_pdf') }}" class="btn btn-default" style="background: cadetblue">Voir la list</a>
+</div>
 {% endblock %}
