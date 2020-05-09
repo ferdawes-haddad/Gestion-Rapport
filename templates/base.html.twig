@@ -80,7 +80,7 @@
  end-->
 
 <!--header start-->
-<header class="header black-bg">
+<header class="header black-bg" >
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
@@ -274,24 +274,24 @@
     </div>
     <div class="top-menu">
         <ul class="nav pull-right top-menu">
-            <li><a class="logout" href="login.html">Logout</a></li>
+            <li><a class="logout" href="{{ path('app_login') }}">Logout</a></li>
         </ul>
     </div>
 </header>
 
 
 <!--header end-->
-   <section id="container">
+   <section id="container" style="background: #FFFFFF">
     <!--main content start-->
-    <section id="main-content" class="wrapper">
-        {% block body %}
-        <section class="wrapper col-md-12 navbar-collapse ">
+    <section id="main-content" class="wrapper" >
+        {% block body  %}
+        <section class="wrapper  navbar-collapse ">
             <div class="center-block">
                 <div class="col-xs-offset-0 col-xs-14">
                     <div class="row content-panel">
                         <div class="col-lg-14">
-                            <div class="row content-panel" style="margin-right: unset; margin-left: unset">
-                                <img src="{{ asset('Template/img/diplome.jpg') }}" style="vertical-align: super;" height="500px" align="center">
+                            <div class="row content-panel"  >
+                                <img src="{{ asset('Template/img/diplome.jpg') }}" style="padding-right: 500px" >
                             </div>
                             <!-- /row -->
                         </div>

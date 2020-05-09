@@ -3,27 +3,30 @@
 {% block title %}Rapport index{% endblock %}
 
 {% block body %}
-    <h1>Rapport index</h1>
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
 
-    <table class="table">
+    <div class=" example-wrapper" >
+    <div class="dashboard-headline">
+
+    <table class="table"  >
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Description</th>
-
-                <th>actions</th>
+                <th><div class="form-check" >Titre</div></th>
+                <th><div class="form-check">Description</div></th>
+                <th><div class="form-check"></div></th>
             </tr>
         </thead>
         <tbody>
         {% for rapport in rapports %}
             <tr>
-                <td>{{ rapport.id }}</td>
-                <td>{{ rapport.titre }}</td>
-                <td>{{ rapport.description }}</td>
-                <td>
-                    <a href="{{ path('rapport_show', {'id': rapport.id}) }}">show</a>
-                    <a href="{{ path('rapport_edit', {'id': rapport.id}) }}">edit</a>
+                <td><div class="form-check"> {{ rapport.titre }}</div></td>
+                <td ><div class="form-check"> {{ rapport.description }}</div></td>
+                <td ><div class="form-check">
+                    <a href="{{ path('rapport_show', {'id': rapport.id}) }}" class="glyphicon glyphicon-list"></a>
+                    <a href="{{ path('rapport_edit', {'id': rapport.id}) }}" class="glyphicon glyphicon-edit"></a></div>
                 </td>
             </tr>
         {% else %}
@@ -33,6 +36,8 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
+    </div>
 
-    <a href="{{ path('rapport_new') }}" class="btn btn-default">Ajouter un rapport</a>
+    <a href="{{ path('rapport_new') }}" class="btn btn-default " style="background: antiquewhite">Ajouter un rapport</a>
 {% endblock %}

@@ -1,0 +1,80 @@
+1ere methode:
+public function createvAction(Request $request)
+    {
+        $voiture=new Voiture();
+
+        if($request->isMethod('POST')){
+            $voiture->setRef($request->get('ref'));
+            $voiture->setSerie($request->get('serie'));
+            $voiture->setDatemc($request->get('date'));
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($voiture);
+            $em->flush();
+            return $this->redirectToRoute('readv');
+        }
+        return $this->render('@EspritParc/Voiture/create.html.twig', array('voiture'=>$voiture ));
+    }
+------------
+view:
+<html>
+<head>
+    <title>Modifier un modele</title>
+
+</head>
+<body>
+<h1>Welcome to the Modele:update page</h1>
+    <fieldset style="width: 50%">
+        <form method="POST">
+            ref: <input type="text" name="ref" value="{{ voiture.ref }}"></br>
+            serie: <input type="text" name="serie" value="{{ voiture.serie }}"></br>
+            date: <input type="text" name="date" value="{{ voiture.datemc }}"></br>
+            <input type="submit" value="Enregistrer">
+        </form>
+    </fieldset>
+
+</body>
+--------------------------------------------------------------------------------------------------
+2eme methode:
+public function createAction(Request $request)
+{   
+    $modele=new Modele();
+    $form=$this->createForm(ModeleType::class,$modele);
+    $form=$form->handleRequest($request);
+    if($form->isValid()){
+        $em=$this->getDoctrine()->getManager();
+        $em->persist($modele);
+        $em->flush();
+        return $this->redirectToRoute('read');
+    }
+    return $this->render('@EspritParc/Modele/create.html.twig', array('form'=>$form->createView() ));
+}
+----------
+view:
+ou bien 
+{{ form(form) }}
+
+
+
+<html>
+    <head>
+        <title>
+            Ajout des modeles
+        </title>
+    </head>
+    <body>
+    <center>
+        <h1>Ajouter un modele</h1>
+        <fieldset style="width: 50%">
+            {{ form_start(form) }}
+            Libelle :* {{ form_widget(form.lib) }}</br>
+            Pays:* {{ form_widget(form.pays) }}</br>
+            Save {{ form_widget(form.save) }}</br>
+            {{ form_end(form) }}
+        </fieldset>
+    </center>
+    </body>
+</html>
+------------
+create:
+    path:     /create
+    defaults: { _controller: EspritParcBundle:Modele:create }

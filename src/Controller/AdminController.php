@@ -23,9 +23,7 @@ class AdminController extends AbstractController
      */
     public function index(AdminRepository $adminRepository): Response
     {
-        return $this->render('admin/index.html.twig', [
-            'admins' => $adminRepository->findAll(),
-        ]);
+        return $this->render('admin/index.html.twig', ['admins' => $adminRepository->findAll(),]);
     }
 
     /**
@@ -51,10 +49,7 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('admin_index');
         }
 
-        return $this->render('admin/new.html.twig', [
-            'admin' => $admin,
-            'form' => $form->createView(),
-        ]);
+        return $this->render('admin/new.html.twig', ['admin' => $admin,'form' => $form->createView(),]);
     }
 
     /**
@@ -88,6 +83,7 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="admin_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Admin $admin): Response

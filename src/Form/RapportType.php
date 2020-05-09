@@ -15,7 +15,7 @@ class RapportType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre', FileType::class, array('label'=>'Choissesez votre rapport'))
+            ->add('titre', FileType::class, array('data_class' => null,'required' => false))
             ->add('description')
        //     ->add('enseignants')
 //            ->add('etudiants')

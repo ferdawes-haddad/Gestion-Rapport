@@ -13,7 +13,7 @@ class AdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('document', FileType::class, array('label'=>'Choissesez un fichier'))
+            ->add('document', FileType::class, array('data_class' => null,'label'=>'Choissesez un fichier','required' => false))
             ->add('dateDepos')
         ;
     }

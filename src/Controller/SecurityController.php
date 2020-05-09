@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class SecurityController extends AbstractController
 {
@@ -14,8 +16,11 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-//        if ($this->getUser()) {
-//           return $this->redirectToRoute('');
+//        if (true === $this->isGranted('ROLE_ADMIN')) {
+//           return $this->redirectToRoute('admin_index');
+//        }
+//        if (true === $this->isGranted('ROLE_USER')) {
+//            return $this->redirectToRoute('etudiant_index');
 //        }
 
         // get the login error if there is one
@@ -32,5 +37,6 @@ class SecurityController extends AbstractController
     public function logout()
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+        //return $this->render('/base.html.twig', ['controller_name' => 'DefaultController',]);
     }
 }

@@ -3,12 +3,11 @@
 {% block title %}Enseignant index{% endblock %}
 
 {% block body %}
-    <h1>Enseignant index</h1>
+    <h1  style="align-content: center">List Enseignant </h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Mail</th>
@@ -18,7 +17,6 @@
         <tbody>
         {% for enseignant in enseignants %}
             <tr>
-                <td>{{ enseignant.id }}</td>
                 <td>{{ enseignant.nom }}</td>
                 <td>{{ enseignant.prenom }}</td>
                 <td>{{ enseignant.mail }}</td>
@@ -35,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('enseignant_new') }}">Create new</a>
+    <a href="{{ path('enseignant_new') }}" style="background: antiquewhite">Ajouter un enseignant</a>
 {% endblock %}

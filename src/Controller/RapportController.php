@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+
 /**
  * @Route("/rapport")
  */
@@ -38,9 +39,6 @@ class RapportController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-//            $entityManager = $this->getDoctrine()->getManager();
-//            $entityManager->persist($rapport);
-//            $entityManager->flush();
 
             $file = $rapport->getTitre();
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
@@ -61,6 +59,7 @@ class RapportController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/{id}", name="rapport_show", methods={"GET"})
      */
     public function show(Rapport $rapport): Response
@@ -71,6 +70,7 @@ class RapportController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/{id}/edit", name="rapport_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Rapport $rapport): Response
@@ -91,6 +91,7 @@ class RapportController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/{id}", name="rapport_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Rapport $rapport): Response
@@ -104,15 +105,4 @@ class RapportController extends AbstractController
         return $this->redirectToRoute('rapport_index');
     }
 
-    /**
-     * Liste des rapports
-     * @Route("/list", name="list_rapports")
-     */
-    public function listRapport(RapportRepository $rapports){
-
-        return $this->render('rapport/list.html.twig',[
-            'rapports'=> $rapports->findAll()
-        ]);
-
-    }
 }
