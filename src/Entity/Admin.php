@@ -26,6 +26,11 @@ class Admin
     private $dateDepos;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $personne;
+
+    /**
      * @ORM\OneToMany(targetEntity="Etudiant", mappedBy="admin")
      */
     private $etudiants;
@@ -44,7 +49,6 @@ class Admin
     {
         return $this->dateDepos;
     }
-
     public function setDateDepos($dateDepos): void
     {
         $this->dateDepos = $dateDepos;
@@ -57,17 +61,24 @@ class Admin
     {
         return $this->document;
     }
-
     public function setDocument($document): void
     {
         $this->document = $document;
+    }
+
+    public function getPersonne()
+    {
+        return $this->personne;
+    }
+    public function setPersonne($personne): void
+    {
+        $this->personne = $personne;
     }
 
     public function getEtudiants(): ArrayCollection
     {
         return $this->etudiants;
     }
-
     public function setEtudiants(ArrayCollection $etudiants): void
     {
         $this->etudiants = $etudiants;
@@ -77,7 +88,6 @@ class Admin
     {
         return $this->enseignants;
     }
-
     public function setEnseignants(ArrayCollection $enseignants): void
     {
         $this->enseignants = $enseignants;
@@ -86,7 +96,6 @@ class Admin
     public function __constructEtudiannt() {
         $this->etudiants = new ArrayCollection();
     }
-
     public function __constructEnseignant() {
         $this->enseignants = new ArrayCollection();
     }

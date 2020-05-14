@@ -14,7 +14,10 @@
     <div class="form">
         <div class="form-group"> {{ form_row(form.titre) }} </div>
         <div class="form-group"> {{ form_row(form.description) }} </div>
-        <div class="form-group"> {{ form_row(form.classes) }} </div>
+        <div class="form-group"> {{ form_row(form.annee) }} </div>
+        <div class="form-group"> {{ form_row(form.classe) }} </div>
+        <div class="form-group"> {{ form_row(form.section) }} </div>
+        <div class="form-group"> {{ form_row(form.enseignants) }} </div>
         <div class="col" id="some-custom-id">
             <button class="btn btn-default " style="background: #d2959b">{{ button_label|default('Ajouter rapport') }}</button>
         </div>

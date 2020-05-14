@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Enseignant;
 use App\Entity\Rapport;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\ChoiceList\Loader\CallbackChoiceLoader;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,9 +19,11 @@ class RapportType extends AbstractType
         $builder
             ->add('titre', FileType::class, array('data_class' => null,'required' => false))
             ->add('description')
-       //     ->add('enseignants')
+            ->add('enseignants', ChoiceType::class)
 //            ->add('etudiants')
-            ->add('classes', ChoiceType::class, ['choices'  => [ '3 éme' => null, '4 éme' => null, '5 éme' => null ]])
+            ->add('classe', ChoiceType::class, ['choices'  => [ '3 éme' => true, '4 éme' => true, '5 éme' => true ]])
+            ->add('section', ChoiceType::class, ['choices'  => [ 'Licence' => true, 'Cycle ingéniere' => true, 'Management' => true ]])
+            ->add('annee')
         ;
     }
 

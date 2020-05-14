@@ -27,12 +27,21 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/document", name="admin_document", methods={"GET"})
+     */
+    public function Document(AdminRepository $adminRepository): Response
+    {
+        return $this->render('admin/document.html.twig', ['admins' => $adminRepository->findAll(),]);
+    }
+
+    /**
      * @Route("/dossier", name="admin_pdf", methods={"GET"})
      */
     public function MyPdf(AdminRepository $adminRepository): Response
     {
         return $this->render('admin/mypdf.html.twig', ['admins' => $adminRepository->findAll(),]);
     }
+
 
     /**
      * @IsGranted("ROLE_ADMIN")

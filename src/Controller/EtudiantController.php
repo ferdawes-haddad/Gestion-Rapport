@@ -22,9 +22,7 @@ class EtudiantController extends AbstractController
      */
     public function index(EtudiantRepository $etudiantRepository): Response
     {
-        return $this->render('etudiant/index.html.twig', [
-            'etudiants' => $etudiantRepository->findAll(),
-        ]);
+        return $this->render('etudiant/index.html.twig', ['etudiants' => $etudiantRepository->findAll(),]);
     }
 
     /**
@@ -42,7 +40,7 @@ class EtudiantController extends AbstractController
             $entityManager->persist($etudiant);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_index');
+            return $this->redirectToRoute('etudiant_index');
         }
 
         return $this->render('etudiant/new.html.twig', [
@@ -56,9 +54,7 @@ class EtudiantController extends AbstractController
      */
     public function show(Etudiant $etudiant): Response
     {
-        return $this->render('etudiant/show.html.twig', [
-            'etudiant' => $etudiant,
-        ]);
+        return $this->render('etudiant/show.html.twig', ['etudiant' => $etudiant,]);
     }
 
     /**
@@ -75,9 +71,7 @@ class EtudiantController extends AbstractController
             return $this->redirectToRoute('etudiant_index');
         }
 
-        return $this->render('etudiant/edit.html.twig', [
-            'etudiant' => $etudiant,
-            'form' => $form->createView(),
+        return $this->render('etudiant/edit.html.twig', ['etudiant' => $etudiant,'form' => $form->createView(),
         ]);
     }
 

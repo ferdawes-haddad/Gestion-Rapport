@@ -80,4 +80,9 @@ class Enseignant
     public function __construct() {
         $this->rapports = new ArrayCollection();
     }
+
+    public function __toString()
+    {
+        return $this->getMail();
+    }
 }

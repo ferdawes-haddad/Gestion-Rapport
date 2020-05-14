@@ -39,9 +39,19 @@ class Rapport
 //    private $etudiants;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Classe", inversedBy="rapports")
+     * @ORM\Column(type="string", length=255)
      */
-    private $classes;
+    private $classe;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $section;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $annee;
 
     public function getId(): ?int
     {
@@ -69,23 +79,53 @@ class Rapport
         return $this;
     }
 
-    public function getEnseignants(): Collection
+    public function getEnseignants()
     {
         return $this->enseignants;
     }
-    public function setEnseignants($enseignants): void
+    public function setEnseignants($enseignants)
     {
         $this->enseignants = $enseignants;
     }
 
-    public function getClasses()
+    public function getClasse()
     {
-        return $this->classes;
+        return $this->classe;
     }
-    public function setClasses($classes): void
+    public function setClasse($classe): void
     {
-        $this->classes = $classes;
+        $this->classe = $classe;
     }
+
+    public function getSection(): ?string
+    {
+        return $this->section;
+    }
+    public function setSection(string $section): self
+    {
+        $this->section = $section;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAnnee()
+    {
+        return $this->annee;
+    }
+
+    /**
+     * @param mixed $annee
+     */
+    public function setAnnee($annee): void
+    {
+        $this->annee = $annee;
+    }
+
+
+
 
 //    public function getEtudiants(): ?string
 //    {
@@ -96,6 +136,9 @@ class Rapport
 //        $this->etudiants = $etudiants;
 //    }
 
+    public function __construct() {
+        $this->enseignants = new ArrayCollection();
+    }
 
 
 

@@ -11,7 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 /**
  * @Route("/rapport")
@@ -23,9 +24,15 @@ class RapportController extends AbstractController
      */
     public function index(RapportRepository $rapportRepository): Response
     {
-        return $this->render('rapport/index.html.twig', [
-            'rapports' => $rapportRepository->findAll(),
-        ]);
+        return $this->render('rapport/index.html.twig', ['rapports' => $rapportRepository->findAll(),]);
+    }
+
+    /**
+     * @Route("/home", name="rapport_home", methods={"GET"})
+     */
+    public function home(RapportRepository $rapportRepository): Response
+    {
+        return $this->render('rapport/home.html.twig', ['rapports' => $rapportRepository->findAll(),]);
     }
 
     /**
@@ -64,9 +71,7 @@ class RapportController extends AbstractController
      */
     public function show(Rapport $rapport): Response
     {
-        return $this->render('rapport/show.html.twig', [
-            'rapport' => $rapport,
-        ]);
+        return $this->render('rapport/show.html.twig', ['rapport' => $rapport,]);
     }
 
     /**
@@ -104,5 +109,38 @@ class RapportController extends AbstractController
 
         return $this->redirectToRoute('rapport_index');
     }
+
+    /**
+     * @IsGranted("ROLE_USER")
+     * @Route("/download/{id}", name="rapport_download", methods={"GET"})
+     */
+    public function download (RapportRepository $rapportRepository): Response
+    {
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+        $rapport = $rapportRepository->findAll();
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('rapport/list.html.twig', ['rapport' => $rapport,]);
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("mypdf.pdf", [
+            "Attachment" => true
+        ]);
+    }
+
 
 }
