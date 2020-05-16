@@ -42,6 +42,23 @@ class Enseignant
      */
     private $rapports;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Soutenance", mappedBy="enseignants")
+     */
+    private $soutenances;
+
+    /**
+     * Enseignant constructor.
+     * @param $id
+     * @param $rapports
+     * @param $soutenances
+     */
+    public function __construct($rapports, $soutenances)
+    {
+        $this->rapports = $rapports;
+        $this->soutenances = $soutenances;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -77,9 +94,33 @@ class Enseignant
         return $this;
     }
 
-    public function __construct() {
-        $this->rapports = new ArrayCollection();
+    public function getAdmin()
+    {
+        return $this->admin;
     }
+    public function setAdmin($admin): void
+    {
+        $this->admin = $admin;
+    }
+
+    public function getRapports(): ArrayCollection
+    {
+        return $this->rapports;
+    }
+    public function setRapports(ArrayCollection $rapports): void
+    {
+        $this->rapports = $rapports;
+    }
+
+    public function getSoutenances()
+    {
+        return $this->soutenances;
+    }
+    public function setSoutenances($soutenances): void
+    {
+        $this->soutenances = $soutenances;
+    }
+
 
     public function __toString()
     {

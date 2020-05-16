@@ -2,28 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\Admin;
+use App\Entity\Soutenance;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AdminType extends AbstractType
+class Soutenance1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('document', FileType::class, array('data_class' => null,'label'=>'Choissesez un fichier','required' => false))
-            ->add('personne', ChoiceType::class, ['choices'  => [ ''=>'à qui', 'étudiant' => false, 'enseignant' => false]])
-            ->add('dateDepos')
+            ->add('date')
+            ->add('role', ChoiceType::class, ['choices'  => [ 'Jury'=>true, 'Raapporteur' => true, 'Enacdrant' => true]])
+            ->add('enseignants')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Admin::class,
+            'data_class' => Soutenance::class,
         ]);
     }
 }

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Soutenance{% endblock %}
+
+{% block body %}
+    <h1>Edit Soutenance</h1>
+
+    {{ include('soutenance/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('soutenance_index') }}" class="btn btn-default " style="background: #d2959b">return à la liste</a>
+
+    {{ include('soutenance/_delete_form.html.twig') }}
+{% endblock %}

@@ -19,7 +19,7 @@ class RapportType extends AbstractType
         $builder
             ->add('titre', FileType::class, array('data_class' => null,'required' => false))
             ->add('description')
-            ->add('enseignants', ChoiceType::class)
+            ->add('enseignants')
 //            ->add('etudiants')
             ->add('classe', ChoiceType::class, ['choices'  => [ '3 éme' => true, '4 éme' => true, '5 éme' => true ]])
             ->add('section', ChoiceType::class, ['choices'  => [ 'Licence' => true, 'Cycle ingéniere' => true, 'Management' => true ]])
@@ -29,8 +29,6 @@ class RapportType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => Rapport::class,
-        ]);
+        $resolver->setDefaults(['data_class' => Rapport::class,]);
     }
 }

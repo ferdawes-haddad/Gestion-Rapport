@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soutenance index{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 0em auto; max-width: 1000px; width: 100%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        thead {color:indianred;}
+        tbody {color:black;}
+        tfoot {color:red;}
+    </style>
+
+<div class="example-wrapper">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th><div class="form-check" >Date</div></th>
+                <th><div class="form-check" >Role</div></th>
+                <th class="form-check">Enseignants</th>
+                <th><div class="form-check" >actions</div></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for soutenance in soutenances %}
+            <tr>
+                <td><div class="form-check"> {{ soutenance.date ? soutenance.date|date('Y-m-d') : '' }}</div></td>
+                <td><div class="form-check"> {{ soutenance.role }}</div></td>
+                <td class="form-check">{{ soutenance.enseignants }}</td>
+                <td><div class="form-check">
+                    <a href="{{ path('soutenance_show', {'id': soutenance.id}) }}" class="glyphicon glyphicon-list"></a>
+                    <a href="{{ path('soutenance_edit', {'id': soutenance.id}) }}" class="glyphicon glyphicon-edit"></a>
+                    <a>{{ include('soutenance/_delete_form.html.twig') }}    </a>   </div>
+            </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucune soutenance ajouté</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('soutenance_new') }}" class="btn btn-default " style="background: #d2959b">Ajouter une soutenance</a>
+{% endblock %}

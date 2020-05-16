@@ -28,6 +28,7 @@ class Rapport
      */
     private $description;
 
+
     /**
      * @ORM\ManyToOne(targetEntity="Enseignant", inversedBy="rapports")
      */
@@ -108,38 +109,13 @@ class Rapport
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getAnnee()
     {
         return $this->annee;
     }
-
-    /**
-     * @param mixed $annee
-     */
     public function setAnnee($annee): void
     {
         $this->annee = $annee;
     }
-
-
-
-
-//    public function getEtudiants(): ?string
-//    {
-//        return $this->etudiants;
-//    }
-//    public function setEtudiants($etudiants): void
-//    {
-//        $this->etudiants = $etudiants;
-//    }
-
-    public function __construct() {
-        $this->enseignants = new ArrayCollection();
-    }
-
-
 
 }
