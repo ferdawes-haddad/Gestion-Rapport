@@ -44,7 +44,6 @@ class AdminController extends AbstractController
 
 
     /**
-     * @IsGranted("ROLE_ADMIN")
      * @Route("/new", name="admin_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -100,7 +99,6 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="admin_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Admin $admin): Response

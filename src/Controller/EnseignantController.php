@@ -28,7 +28,6 @@ class EnseignantController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_USER")
      * @Route("/new", name="enseignant_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

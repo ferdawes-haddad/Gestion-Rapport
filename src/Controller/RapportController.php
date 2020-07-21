@@ -36,7 +36,6 @@ class RapportController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_USER")
      * @Route("/new", name="rapport_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -66,7 +65,6 @@ class RapportController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_USER")
      * @Route("/{id}", name="rapport_show", methods={"GET"})
      */
     public function show(Rapport $rapport): Response
@@ -75,7 +73,6 @@ class RapportController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_USER")
      * @Route("/{id}/edit", name="rapport_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Rapport $rapport): Response
@@ -96,7 +93,6 @@ class RapportController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_USER")
      * @Route("/{id}", name="rapport_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Rapport $rapport): Response
@@ -111,7 +107,6 @@ class RapportController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_USER")
      * @Route("/download/{id}", name="rapport_download", methods={"GET"})
      */
     public function download (RapportRepository $rapportRepository): Response

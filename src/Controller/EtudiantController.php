@@ -25,8 +25,9 @@ class EtudiantController extends AbstractController
         return $this->render('etudiant/index.html.twig', ['etudiants' => $etudiantRepository->findAll(),]);
     }
 
+
+// * @IsGranted("ROLE_USER") ==> tsedha fel annotation tethalek page login
     /**
-     * @IsGranted("ROLE_USER")
      * @Route("/new", name="etudiant_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
