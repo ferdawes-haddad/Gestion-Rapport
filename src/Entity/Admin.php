@@ -22,7 +22,9 @@ class Admin
      */
     private $document;
 
-    /** @ORM\Column(type="datetime") */
+    /**
+     * @ORM\Column(type="datetime")
+     */
     private $dateDepos;
 
     /**

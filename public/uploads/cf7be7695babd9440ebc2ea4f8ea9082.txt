@@ -1,7 +1,0 @@
-ng new NomProject
-ng serve :démarer le projet
-ng g c nomComponent :générer un composant
-
-
-ng g c ListerUniver
- 

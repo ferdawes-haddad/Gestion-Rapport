@@ -46,11 +46,11 @@ class RapportController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $file = $rapport->getTitre();
+            $file = $rapport->getFile();
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
             $file->move(
                 $this->getParameter('upload_directory'),$fileName);
-            $rapport->setTitre($fileName);
+            $rapport->setFile($fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($rapport);
             $em->flush();
@@ -104,37 +104,6 @@ class RapportController extends AbstractController
         }
 
         return $this->redirectToRoute('rapport_index');
-    }
-
-    /**
-     * @Route("/download/{id}", name="rapport_download", methods={"GET"})
-     */
-    public function download (RapportRepository $rapportRepository): Response
-    {
-        // Configure Dompdf according to your needs
-        $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
-
-        // Instantiate Dompdf with our options
-        $dompdf = new Dompdf($pdfOptions);
-        $rapport = $rapportRepository->findAll();
-
-        // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('rapport/list.html.twig', ['rapport' => $rapport,]);
-
-        // Load HTML to Dompdf
-        $dompdf->loadHtml($html);
-
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render the HTML as PDF
-        $dompdf->render();
-
-        // Output the generated PDF to Browser (force download)
-        $dompdf->stream("mypdf.pdf", [
-            "Attachment" => true
-        ]);
     }
 
 

@@ -47,16 +47,8 @@ class Enseignant
      */
     private $soutenances;
 
-    /**
-     * Enseignant constructor.
-     * @param $id
-     * @param $rapports
-     * @param $soutenances
-     */
-    public function __construct($rapports, $soutenances)
+    public function __construct()
     {
-        $this->rapports = $rapports;
-        $this->soutenances = $soutenances;
     }
 
     public function getId(): ?int

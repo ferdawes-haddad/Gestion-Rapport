@@ -24,6 +24,11 @@ class Rapport
     private $titre;
 
     /**
+     * @ORM\Column(type="text")
+     */
+    private $file;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $description;
@@ -34,10 +39,10 @@ class Rapport
      */
     private $enseignants;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="Etudiant", inversedBy="rapports")
-//     */
-//    private $etudiants;
+    /**
+     * @ORM\ManyToOne(targetEntity="Etudiant", inversedBy="rapports")
+    */
+    private $etudiants;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -118,4 +123,24 @@ class Rapport
         $this->annee = $annee;
     }
 
+    /**
+     * @return string
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param string $file
+     */
+    public function setFile($file): void
+    {
+        $this->file = $file;
+    }
+
+    public function getFilePath()
+    {
+        return "/uploads/{$this->file}";
+    }
 }

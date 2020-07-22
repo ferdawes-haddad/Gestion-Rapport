@@ -28,19 +28,21 @@
                 <h5 class="centered">Sesame</h5>
 
                 <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-desktop"></i>
-                        <span>Espace Administration</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a  href="{{ path('admin_index') }}">s'authentifier</a></li>
-                    </ul>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('admin_index') }}">
+                            <i class="fa fa-desktop"></i>
+                            <span>Espace Administration</span>
+                        </a>
+                    {% endif %}
+
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    {% if is_granted('ROLE_ETUDIANT') %}
+                    <a href="{{ path('rapport_home') }}">
                         <i class="fa fa-tasks"></i>
-                        <span><a href="{{ path('etudiant_index') }}">Espace Etudiants</a></span>
+                        <span>Espace Etudiants</span>
                     </a>
+                    {% endif %}
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
@@ -274,7 +276,12 @@
     </div>
     <div class="top-menu">
         <ul class="nav pull-right top-menu">
-            <li><a class="logout" href="{{ path('app_login') }}">Logout</a></li>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a class="logout" href="{{ path('app_logout') }}">Logout</a></li>
+            {% else %}
+                <li><a class="logout" href="{{ path('app_login') }}">login</a></li>
+                <li><a class="logout" href="{{ path('app_register') }}">Register</a></li>
+            {% endif %}
         </ul>
     </div>
 </header>

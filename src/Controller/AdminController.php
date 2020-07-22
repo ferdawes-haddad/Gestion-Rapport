@@ -54,13 +54,13 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($admin);
-            $entityManager->flush();
-
             $file = $admin->getDocument();
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move($this->getParameter('upload_directory'), $fileName);
+            $file->move(
+                $this->getParameter('upload_directory'),$fileName);
             $admin->setDocument($fileName);
+            $entityManager->persist($admin);
+            $entityManager->flush();
 
             return $this->redirectToRoute('admin_pdf');
         }

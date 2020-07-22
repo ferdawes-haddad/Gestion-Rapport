@@ -32,21 +32,28 @@ class Etudiant
      */
     private $mail;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Admin", inversedBy="etudiants")
-     */
-    private $admin;
-
 //    /**
-//     * @ORM\OneToMany(targetEntity="Rapport", mappedBy="etudiants")
+//     * @ORM\ManyToOne(targetEntity="Admin", inversedBy="etudiants")
 //     */
-//    private $rapports;
+//    private $admin;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Rapport", mappedBy="etudiants")
+     */
+    private $rapports;
+
+    /**
+     * @ORM\OneToOne(targetEntity="User")
+     */
+    private $user;
+
+    public function __construct() {
+        $this->rapports = new ArrayCollection();
+    }
     public function getId(): ?int
     {
         return $this->id;
     }
-
     public function getNom(): ?string
     {
         return $this->nom;
@@ -57,7 +64,6 @@ class Etudiant
 
         return $this;
     }
-
     public function getPrenom(): ?string
     {
         return $this->prenom;
@@ -68,7 +74,6 @@ class Etudiant
 
         return $this;
     }
-
     public function getMail(): ?string
     {
         return $this->mail;
@@ -80,7 +85,36 @@ class Etudiant
         return $this;
     }
 
-    public function __construct() {
-        $this->rapports = new ArrayCollection();
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
+
+    /**
+     * @param User $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getRapports(): ArrayCollection
+    {
+        return $this->rapports;
+    }
+
+    /**
+     * @param ArrayCollection $rapports
+     */
+    public function setRapports(ArrayCollection $rapports): void
+    {
+        $this->rapports = $rapports;
+    }
+
 }
