@@ -13,7 +13,7 @@
 
     <div class="example-wrapper">
 
-        <div class="dashboard-headline">
+        <div class="transformation">
             <div class="table-responsive ">
                 <table class="table table-shopping">
 
@@ -24,6 +24,8 @@
                         <th class="form-check">Raporteur</th>
                         <th class="form-check">President</th>
                         <th class="form-check">Etudiant</th>
+                        <th><div class="form-check"></div></th>
+                        <th><div class="form-check"></div></th>
                     </tr>
                     </thead>
 
@@ -35,6 +37,10 @@
                             <td class="form-check">{{ soutenance.raporteur.mail }}</td>
                             <td class="form-check">{{ soutenance.president.mail }}</td>
                             <td class="form-check">{{ soutenance.etudiant.mail }}</td>
+                            <td><div class="form-check">
+                                    <a href="{{ path('soutenance_edit', {'id': soutenance.id}) }}" class="glyphicon glyphicon-edit"></a>
+                                    <a>{{ include('soutenance/_delete_form.html.twig') }}    </a>
+                            </div></td>
                         </tr>
                     {% endfor %}
                     </tbody>

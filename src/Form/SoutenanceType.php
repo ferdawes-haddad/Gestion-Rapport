@@ -18,10 +18,10 @@ class SoutenanceType extends AbstractType
     {
         $builder
             ->add('date')
-            ->add('encadrer', EntityType::class, ['class' => Enseignant::class, 'choice_label' => 'mail'])
-            ->add('raporteur', EntityType::class, ['class' => Enseignant::class, 'choice_label' => 'mail'])
-            ->add('president', EntityType::class, ['class' => Enseignant::class, 'choice_label' => 'mail'])
-            ->add('etudiant', EntityType::class, ['class' => Etudiant::class, 'choice_label' => 'mail'])
+            ->add('encadrer', EntityType::class, ['class' => Enseignant::class, 'choice_label' => 'mail', 'attr' => ['class' =>'form-control']])
+            ->add('raporteur', EntityType::class, ['class' => Enseignant::class, 'choice_label' => 'mail', 'attr' => ['class' =>'form-control']])
+            ->add('president', EntityType::class, ['class' => Enseignant::class, 'choice_label' => 'mail', 'attr' => ['class' =>'form-control']])
+            ->add('etudiant', EntityType::class, ['class' => Etudiant::class, 'choice_label' => 'mail','attr' => ['class' =>'form-control']])
         ;
     }
 

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Admin;
 use App\Form\AdminType;
 use App\Repository\AdminRepository;
+use App\Repository\RapportRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,6 +27,13 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', ['admins' => $adminRepository->findAll(),]);
     }
 
+    /**
+     * @Route("/listRapport", name="list_rapport", methods={"GET"})
+     */
+    public function listRapport(RapportRepository $rapportRepository): Response
+    {
+        return $this->render('admin/listRapport.html.twig', ['rapports' => $rapportRepository->findAll(),]);
+    }
     /**
      * @Route("/document", name="admin_document", methods={"GET"})
      */

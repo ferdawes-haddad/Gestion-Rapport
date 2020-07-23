@@ -20,15 +20,15 @@ class RapportType extends AbstractType
     {
         $builder
             ->add('titre',TextType::class, ['attr' => ['class' =>'form-control']])
-            ->add('file', FileType::class, array('required' => false, 'attr' => ['class' =>'form-control']))
+            ->add('file', FileType::class, array( 'data_class' => null,'required' => false, 'attr' => ['class' =>'form-control']))
             ->add('description', TextareaType::class, ['attr' => ['class' =>'form-control']])
             ->add('enseignants', EntityType::class, [
                 'class' => Enseignant::class,
                 'choice_label' => 'mail',
                 'attr' => ['class' =>'form-control']])
 //            ->add('etudiants')
-            ->add('classe', ChoiceType::class, ['choices'  => [ '3 éme' => true, '4 éme' => true, '5 éme' => true ], 'attr' => ['class' =>'form-control']])
-            ->add('section', ChoiceType::class, ['choices'  => [ 'Licence' => true, 'Cycle ingéniere' => true, 'Management' => true], 'attr' => ['class' =>'form-control']])
+            ->add('classe', ChoiceType::class, ['choices'  => [ ''=> null,'3 éme' => true, '4 éme' => true, '5 éme' => true ], 'attr' => ['class' =>'form-control']])
+            ->add('section', ChoiceType::class, ['choices'  => [ ''=> null, 'Licence' => true, 'Cycle ingéniere' => true, 'Management' => true], 'attr' => ['class' =>'form-control']])
             ->add('annee', NumberType::class, ['attr' => ['class' =>'form-control']])
         ;
     }

@@ -10,22 +10,26 @@
 
     <h1>Enseignant</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Nom</th>
-                <td>{{ enseignant.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ enseignant.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ enseignant.mail }}</td>
-            </tr>
-        </tbody>
-    </table>
+
+    <div class="form">
+
+        <div class="form-group">
+            <b>Nom</b>
+            {{ enseignant.nom }}
+        </div>
+
+        <div class="form-group">
+            <b>Prenom</b>
+            {{ enseignant.prenom }}
+        </div>
+
+        <div class="form-group">
+            <b>Mail</b>
+            {{ enseignant.mail }}
+        </div>
+
+    </div>
+
 
     <a href="{{ path('enseignant_index') }}"class="btn btn-default glyphicon glyphicon-list" style="background: #5eb5e0"></a>
 

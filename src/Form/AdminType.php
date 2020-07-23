@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Admin;
+use Doctrine\DBAL\Types\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -14,8 +15,8 @@ class AdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('document', FileType::class, array('data_class' => null,'label'=>'Choissesez un fichier','required' => false))
-            ->add('personne', ChoiceType::class, ['choices'  => [ ''=>'à qui', 'étudiant' => false, 'enseignant' => false]])
+            ->add('document', FileType::class, array('data_class' => null,'label'=>'Choissesez un fichier','required' => false, 'attr' => ['class' =>'form-control']))
+            ->add('personne', ChoiceType::class, ['choices'  => [ ''=> null, 'étudiant' => false, 'enseignant' => false]])
             ->add('dateDepos')
         ;
     }

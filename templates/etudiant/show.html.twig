@@ -10,25 +10,23 @@
     </style>
     <h1>Etudiant</h1>
 
-    <div class="form wrapper">
-        <table class="table">
-            <tbody>
+    <div class="form">
 
-            <tr>
-                <div class="form-group"> <th>Nom</th></div>
-                <div class="form-group"><td>{{ etudiant.nom }}</td></div>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ etudiant.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Mail</th>
-                <td>{{ etudiant.mail }}</td>
-            </tr>
+                <div class="form-group">
+                    <b>Nom</b>
+                    {{ etudiant.nom }}
+                </div>
 
-            </tbody>
-        </table>
+                <div class="form-group">
+                    <b>Prenom</b>
+                    {{ etudiant.prenom }}
+                </div>
+
+                <div class="form-group">
+                    <b>Mail</b>
+                    {{ etudiant.mail }}
+                </div>
+
     </div>
 
 
