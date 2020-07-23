@@ -46,7 +46,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/new", name="admin_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request , \Swift_Mailer $mailer): Response
     {
         $admin = new Admin();
         $form = $this->createForm(AdminType::class, $admin);
@@ -60,6 +60,20 @@ class AdminController extends AbstractController
                 $this->getParameter('upload_directory'),$fileName);
             $admin->setDocument($fileName);
             $entityManager->persist($admin);
+
+            $message = (new \Swift_Message('Hello Email'))
+                ->setFrom('send@example.com')
+                ->setTo('recipient@example.com')
+                ->setBody(
+                    $this->renderView(
+                    // templates/hello/email.txt.twig
+                        'mail/email.txt.twig',
+                        ['name' => $admin->getDocument()]
+                    )
+                )
+            ;
+            $mailer->send($message);
+
             $entityManager->flush();
 
             return $this->redirectToRoute('admin_pdf');

@@ -4,16 +4,13 @@ namespace App\Form;
 
 namespace App\Form;
 
+use App\Entity\Enseignant;
+use App\Entity\Etudiant;
 use App\Entity\Soutenance;
-use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class SoutenanceType extends AbstractType
 {
@@ -21,8 +18,10 @@ class SoutenanceType extends AbstractType
     {
         $builder
             ->add('date')
-            ->add('role', ChoiceType::class, ['choices'  => [ 'Jury'=>true, 'Raapporteur' => true, 'Enacdrant' => true]])
-            ->add('enseignants')
+            ->add('encadrer', EntityType::class, ['class' => Enseignant::class, 'choice_label' => 'mail'])
+            ->add('raporteur', EntityType::class, ['class' => Enseignant::class, 'choice_label' => 'mail'])
+            ->add('president', EntityType::class, ['class' => Enseignant::class, 'choice_label' => 'mail'])
+            ->add('etudiant', EntityType::class, ['class' => Etudiant::class, 'choice_label' => 'mail'])
         ;
     }
 

@@ -21,7 +21,7 @@ class SoutenanceController extends AbstractController
      */
     public function index(SoutenanceRepository $soutenanceRepository): Response
     {
-        return $this->render('soutenance/index.html.twig', ['soutenances' => $soutenanceRepository->findAll(),]);
+        return $this->render('soutenance/home.html.twig', ['soutenances' => $soutenanceRepository->findAll(),]);
     }
 
     /**
@@ -35,7 +35,7 @@ class SoutenanceController extends AbstractController
     /**
      * @Route("/new", name="soutenance_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, \Swift_Mailer $mailer): Response
     {
         $soutenance = new Soutenance();
         $form = $this->createForm(SoutenanceType::class, $soutenance);
@@ -45,6 +45,21 @@ class SoutenanceController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($soutenance);
             $entityManager->flush();
+
+            $message = (new \Swift_Message('Hello Email'))
+                ->setFrom('ferdawes.haddad@sesame.com.tn')
+                ->setTo($soutenance->getEncadrer()->getMail())
+                ->addCc($soutenance->getEtudiant()->getMail())
+                ->addCc($soutenance->getPresident()->getMail())
+                ->addCc($soutenance->getRaporteur()->getMail())
+                ->setBody(
+                    $this->renderView(
+                    // templates/hello/email.txt.twig
+                        'mail/email.txt.twig',
+                        ['name' => $soutenance->getDate()->format('d/m/Y')]
+                    )
+                );
+            $mailer->send($message);
 
             return $this->redirectToRoute('soutenance_index');
         }

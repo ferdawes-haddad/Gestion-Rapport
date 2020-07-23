@@ -51,9 +51,25 @@ class EnseignantController extends AbstractController
     }
 
     /**
+     * @Route("/home", name="enseignant_home")
+     */
+    public function home(): Response
+    {
+        return $this->render('enseignant/home.html.twig', []);
+    }
+
+    /**
+     * @Route("/raporteur/home", name="raporteur_home")
+     */
+    public function homeRaporteur(): Response
+    {
+        return $this->render('enseignant/homeRaporteur.html.twig', []);
+    }
+
+    /**
      * @Route("/{id}", name="enseignant_show", methods={"GET"})
      */
-    public function show(Enseignant $enseignant): Response
+    public function show($id, Enseignant $enseignant): Response
     {
         return $this->render('enseignant/show.html.twig', [
             'enseignant' => $enseignant,

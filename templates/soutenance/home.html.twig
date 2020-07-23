@@ -20,8 +20,10 @@
                     <thead>
                     <tr>
                         <th class="form-check">Date</th>
-                        <th class="form-check">Role</th>
-                        <th class="form-check">Enseignants</th>
+                        <th class="form-check">Encadreur</th>
+                        <th class="form-check">Raporteur</th>
+                        <th class="form-check">President</th>
+                        <th class="form-check">Etudiant</th>
                     </tr>
                     </thead>
 
@@ -29,8 +31,10 @@
                     {% for soutenance in soutenances %}
                         <tr>
                             <td class="form-check">{{ soutenance.date ? soutenance.date|date('Y-m-d') : '' }}</td>
-                            <td class="form-check">{{ soutenance.role }}</td>
-                            <td class="form-check">{{ soutenance.enseignants }}</td>
+                            <td class="form-check">{{ soutenance.encadrer.mail }}</td>
+                            <td class="form-check">{{ soutenance.raporteur.mail }}</td>
+                            <td class="form-check">{{ soutenance.president.mail }}</td>
+                            <td class="form-check">{{ soutenance.etudiant.mail }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

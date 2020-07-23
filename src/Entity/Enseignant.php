@@ -42,10 +42,7 @@ class Enseignant
      */
     private $rapports;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Soutenance", mappedBy="enseignants")
-     */
-    private $soutenances;
+
 
     public function __construct()
     {

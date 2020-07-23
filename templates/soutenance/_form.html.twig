@@ -12,8 +12,10 @@
 
     <div class="form">
         <div class="form-group"> {{ form_row(form.date) }} </div>
-        <div class="form-group"> {{ form_row(form.role) }} </div>
-        <div class="form-group"> {{ form_row(form.enseignants) }} </div>
+        <div class="form-group"> {{ form_row(form.encadrer) }} </div>
+        <div class="form-group"> {{ form_row(form.raporteur) }} </div>
+        <div class="form-group"> {{ form_row(form.president) }} </div>
+        <div class="form-group"> {{ form_row(form.etudiant) }} </div>
         <div class="col" id="some-custom-id">
             <button class="btn btn-default " style="background: #d2959b">{{ button_label|default('Ajouter soutenance') }}</button>
         </div>

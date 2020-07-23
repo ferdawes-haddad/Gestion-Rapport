@@ -23,14 +23,24 @@ class Soutenance
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Enseignant")
      */
-    private $role;
+    private $encadrer;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Enseignant", inversedBy="soutenances")
+     * @ORM\ManyToOne(targetEntity="Enseignant")
      */
-    private $enseignants;
+    private $raporteur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Enseignant")
+     */
+    private $president;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Etudiant")
+     */
+    private $etudiant;
 
 
     public function getId(): ?int
@@ -42,7 +52,6 @@ class Soutenance
     {
         return $this->date;
     }
-
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
@@ -50,24 +59,70 @@ class Soutenance
         return $this;
     }
 
-    public function getRole(): ?string
+    /**
+     * @return Enseignant
+     */
+    public function getEncadrer()
     {
-        return $this->role;
+        return $this->encadrer;
     }
 
-    public function setRole(string $role): self
+    /**
+     * @param mixed $encadrer
+     */
+    public function setEncadrer($encadrer): void
     {
-        $this->role = $role;
-
-        return $this;
+        $this->encadrer = $encadrer;
     }
 
-    public function getEnseignants()
+    /**
+     * @return mixed
+     */
+    public function getRaporteur()
     {
-        return $this->enseignants;
+        return $this->raporteur;
     }
-    public function setEnseignants($enseignants): void
+
+    /**
+     * @param mixed $raporteur
+     */
+    public function setRaporteur($raporteur): void
     {
-        $this->enseignants = $enseignants;
+        $this->raporteur = $raporteur;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPresident()
+    {
+        return $this->president;
+    }
+
+    /**
+     * @param mixed $president
+     */
+    public function setPresident($president): void
+    {
+        $this->president = $president;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEtudiant()
+    {
+        return $this->etudiant;
+    }
+
+    /**
+     * @param mixed $etudiant
+     */
+    public function setEtudiant($etudiant): void
+    {
+        $this->etudiant = $etudiant;
+    }
+
+
+
 }
